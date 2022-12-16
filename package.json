@@ -20,6 +20,11 @@
       "prettier --write"
     ]
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },  
   "keywords": [
     "Decentralised",
     "Content-Addressed",
