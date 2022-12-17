@@ -3,7 +3,7 @@
 const FormData = require("form-data");
 const fs = require("fs");
 const p = require("path");
-const { Blake3Hasher } = require("@napi-rs/blake-hash");
+const { createHash } = require('blake3');
 const tus = require("tus-js-client");
 const { DetailedError } = require("tus-js-client");
 
@@ -104,10 +104,10 @@ async function uploadLargeFile(client, path, stream, filename, filesize, opts) {
     };
 
   const b3hash = await new Promise((resolve, reject) => {
-    const hasher = new Blake3Hasher();
+    const hasher = createHash();
     stream.on("error", (err) => reject(err));
     stream.on("data", (chunk) => hasher.update(chunk));
-    stream.on("end", () => resolve(hasher.digestBuffer()));
+    stream.on("end", () => resolve(hasher.digest()));
   });
 
   const hash = Buffer.concat([Buffer.alloc(1, mhashBlake3Default), b3hash]);

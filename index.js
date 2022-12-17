@@ -8,7 +8,6 @@ const {
   defaultPortalUrl,
   uriS5Prefix,
   formatS5Link,
-  onUploadProgress,
 } = require("./src/utils");
 
 module.exports = {
@@ -18,5 +17,4 @@ module.exports = {
   defaultS5PortalUrl,
   uriS5Prefix,
   formatS5Link,
-  onUploadProgress,
 };

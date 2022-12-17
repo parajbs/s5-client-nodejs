@@ -8,7 +8,7 @@ const fs = require("fs");
 const process = require("process");
 
 const { S5Client } = require("..");
-const { onUploadProgress } = require("../src/utils");
+const { onUploadProgress } = require("../src/testing");
 
 const client = new S5Client("", { portalUrl: "http://127.0.0.1:5522", onUploadProgress });
 
